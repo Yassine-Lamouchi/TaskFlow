@@ -15,12 +15,12 @@ const app = express();
 
 // Middlewares globaux
 
-// Activer CORS (permet au frontend React de communiquer avec le backend)
+// Activer CORS (supporte le frontend local et le frontend déployé sur Vercel)
 app.use(
   cors({
-    origin: "http://localhost:3000", // Adresse du frontend React
+    origin: process.env.CLIENT_URL || true,
     credentials: true,
-  }),
+  })
 );
 
 // Parser le JSON dans le body des requêtes
